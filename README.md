@@ -13,26 +13,24 @@ Sebuah aplikasi chatbot berbasis suara yang memungkinkan pengguna berbicara mela
 ## Fitur Utama
 
 * **Speech-to-Text (STT)**
-
   * Menggunakan `whisper.cpp` dari OpenAI untuk mentranskripsi audio `.wav` ke teks.
 
 * **LLM Integration**
-
   * Memanfaatkan Google Gemini API untuk menghasilkan respons dalam Bahasa Indonesia.
 
 * **Text-to-Speech (TTS)**
-
   * Menggunakan model Coqui TTS (v1.2) dengan speaker `wibowo` untuk mengubah teks menjadi suara `.wav`.
 
 * **Antarmuka Web Interaktif**
-
   * Frontend menggunakan `Gradio` untuk demo dan pengujian langsung dari browser.
 
 ---
 
 ## Demo Project
-https://www.youtube.com/watch?v=tgZr9qRMf9k&authuser=0
-*Klik thumbnail di atas untuk menonton demo video aplikasi.* :contentReference[oaicite:2]{index=2}
+## Demo Video
+
+[![Lihat Demo](https://img.youtube.com/vi/tgZr9qRMf9k/0.jpg)](https://youtu.be/tgZr9qRMf9k)  
+*Klik thumbnail di atas untuk menonton demo video.*
 
 ## Prasyarat
 
@@ -120,18 +118,6 @@ https://www.youtube.com/watch?v=tgZr9qRMf9k&authuser=0
 ├── requirements.txt       # Daftar dependensi Python
 └── README.md              # Dokumentasi proyek
 ```
-
----
-
-## Kontribusi
-
-Selamat datang kontribusi dari siapa pun! Silakan fork repository ini, buat branch fitur, dan kirim pull request.
-
-1. Fork repository
-2. Buat branch fitur: `git checkout -b feature/awesome-feature`
-3. Commit perubahan: `git commit -m "Add awesome-feature"`
-4. Push branch: `git push origin feature/awesome-feature`
-5. Buka Pull Request di GitHub
 
 ---
 
