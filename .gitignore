@@ -1,0 +1,17 @@
+# Environment dan credentials
+.env
+env/
+venv/
+__pycache__/
+
+# Folder khusus yang tidak perlu diupload
+app/whisper.cpp/
+app/coqui_utils/
+
+# File temporary
+*.temp
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
