@@ -1,37 +1,144 @@
-# Voice Chatbot UAS – STT, Gemini LLM, TTS Integration
+# Voice Chatbot UAS
 
-Proyek UAS ini merupakan aplikasi chatbot berbasis suara yang memungkinkan pengguna berbicara langsung melalui antarmuka web. Sistem akan mengenali suara pengguna, mengubahnya menjadi teks (Speech-to-Text), memprosesnya menggunakan model bahasa besar (Gemini API), lalu mengubah hasil jawabannya kembali menjadi suara (Text-to-Speech).
+**Pemrosesan Bahasa Alami • Semester Genap 2024/2025**
 
-## 📌 Fitur Utama
-- 🎙️ Speech-to-Text (STT) menggunakan `whisper.cpp` dari OpenAI.
-- 🧠 LLM Integration menggunakan Google Gemini API untuk menghasilkan respons dalam Bahasa Indonesia.
-- 🔊 Text-to-Speech (TTS) menggunakan model Coqui TTS (Indonesian TTS).
-- 🧪 Antarmuka pengguna interaktif berbasis `Gradio` untuk pengujian langsung dari browser.
+Sebuah aplikasi chatbot berbasis suara yang memungkinkan pengguna berbicara melalui antarmuka web. Sistem akan:
 
-## 🗂️ Struktur Proyek
+1. Menerima input suara pengguna (Speech-to-Text)
+2. Mengolah teks melalui model bahasa besar (Google Gemini API)
+3. Mengembalikan respons dalam bentuk suara (Text-to-Speech)
+
+---
+
+## Fitur Utama
+
+* **Speech-to-Text (STT)**
+
+  * Menggunakan `whisper.cpp` dari OpenAI untuk mentranskripsi audio `.wav` ke teks.
+
+* **LLM Integration**
+
+  * Memanfaatkan Google Gemini API untuk menghasilkan respons dalam Bahasa Indonesia.
+
+* **Text-to-Speech (TTS)**
+
+  * Menggunakan model Coqui TTS (v1.2) dengan speaker `wibowo` untuk mengubah teks menjadi suara `.wav`.
+
+* **Antarmuka Web Interaktif**
+
+  * Frontend menggunakan `Gradio` untuk demo dan pengujian langsung dari browser.
+
+---
+
+## Demo Project
+https://www.youtube.com/watch?v=tgZr9qRMf9k&authuser=0
+*Klik thumbnail di atas untuk menonton demo video aplikasi.* :contentReference[oaicite:2]{index=2}
+
+## Prasyarat
+
+* Python >= 3.9
+* `git` untuk meng-clone repository
+* API Key Google Gemini (simpan di file `.env`)
+* Model `whisper.cpp` (direpo `app/whisper.cpp`)
+* Model Coqui TTS (direpo `app/coqui_utils`)
+
+---
+
+## Instalasi dan Setup
+
+1. **Clone Repository**
+
+   ```bash
+   git clone https://github.com/prytarosela/2208107010046_PrytaRosela_UAS_NLP.git
+   cd 2208107010046_PrytaRosela_UAS_NLP
+   ```
+
+2. **Buat Virtual Environment & Install Dependensi**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate       # Linux/macOS
+   venv\\Scripts\\activate      # Windows PowerShell
+   pip install --upgrade pip
+   pip install -r requirements.txt
+   ```
+
+3. **Konfigurasi API Key**
+
+   * Buat file `.env` di root project:
+
+     ```env
+     GEMINI_API_KEY=your_api_key_here
+     ```
+
+4. **Unduh Model STT & TTS**
+
+   * Pastikan folder `app/whisper.cpp` berisi seluruh file model Whisper.
+   * Pastikan folder `app/coqui_utils` berisi model dan konfigurasi Coqui TTS.
+
+---
+
+## Cara Menjalankan
+
+1. **Backend (FastAPI)**
+
+   ```bash
+   cd app
+   uvicorn main:app --reload
+   ```
+
+   * API endpoint STT, LLM, dan TTS tersedia di `http://localhost:8000`.
+
+2. **Frontend (Gradio)**
+
+   ```bash
+   cd gradio_app
+   python app.py
+   ```
+
+   * Buka `http://localhost:7860` di browser.
+
+---
+
+## Struktur Proyek
+
 ```
-voice_chatbot_project/
+2208107010046_PrytaRosela_UAS_NLP/
 │
-├── app/
-│   ├── main.py            # Endpoint utama FastAPI
-│   ├── llm.py             # Integrasi Gemini API
-│   ├── stt.py             # Transkripsi suara (whisper.cpp)
-│   ├── tts.py             # TTS dengan Coqui
-│   └── whisper.cpp/       # Hasil clone whisper.cpp
-│   └── coqui_utils/       # Model dan config Coqui TTS
+├── app/                   # Backend FastAPI & integrasi model
+│   ├── main.py            # Endpoint STT, Gemini, TTS
+│   ├── stt.py             # Modul transkripsi suara (whisper.cpp)
+│   ├── llm.py             # Modul pemanggilan Google Gemini API
+│   ├── tts.py             # Modul Coqui TTS
+│   ├── whisper.cpp/       # Source whisper.cpp & model
+│   └── coqui_utils/       # Model dan konfigurasi Coqui TTS
 │
-├── gradio_app/
-│   └── app.py             # Frontend dengan Gradio
+├── gradio_app/            # Frontend demo Gradio
+│   └── app.py             # Interface Gradio
 │
-├── .env                   # Menyimpan Gemini API Key
+├── .env                   # Konfigurasi API key (gitignored)
 ├── requirements.txt       # Daftar dependensi Python
+└── README.md              # Dokumentasi proyek
 ```
 
-## 📚 Catatan
-- Semua file audio menggunakan format `.wav`.
-- Untuk menghasilkan fonem seperti `dəˈnɡan`, teks dari Gemini harus dikonversi ke fonetik.
-- Disarankan menggunakan model Whisper: `ggml-large-v3-turbo`.
-- Gunakan speaker: `wibowo` dari model Coqui v1.2.
+---
 
-## 👨‍💻 Dibuat Untuk
-Proyek UAS mata kuliah *Pemrosesan Bahasa Alami* — Semester Genap 2024/2025.
+## Kontribusi
+
+Selamat datang kontribusi dari siapa pun! Silakan fork repository ini, buat branch fitur, dan kirim pull request.
+
+1. Fork repository
+2. Buat branch fitur: `git checkout -b feature/awesome-feature`
+3. Commit perubahan: `git commit -m "Add awesome-feature"`
+4. Push branch: `git push origin feature/awesome-feature`
+5. Buka Pull Request di GitHub
+
+---
+
+## Lisensi
+
+Proyek ini dilisensikan di bawah lisensi MIT. Lihat file `LICENSE` untuk detail.
+
+---
+
+> Dibuat oleh Pryta Rosela — 2025
