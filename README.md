@@ -26,7 +26,6 @@ Sebuah aplikasi chatbot berbasis suara yang memungkinkan pengguna berbicara mela
 
 ---
 
-## Demo Project
 ## Demo Video
 
 [![Lihat Demo](https://img.youtube.com/vi/tgZr9qRMf9k/0.jpg)](https://youtu.be/tgZr9qRMf9k)  
