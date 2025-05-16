@@ -19,7 +19,7 @@ Sebuah aplikasi chatbot berbasis suara yang memungkinkan pengguna berbicara mela
   * Memanfaatkan Google Gemini API untuk menghasilkan respons dalam Bahasa Indonesia.
 
 * **Text-to-Speech (TTS)**
-  * Menggunakan model Coqui TTS (v1.2) dengan speaker `wibowo` untuk mengubah teks menjadi suara `.wav`.
+  * Menggunakan model Coqui TTS (v1.2) dengan speaker `gadis` untuk mengubah teks menjadi suara `.wav`.
 
 * **Antarmuka Web Interaktif**
   * Frontend menggunakan `Gradio` untuk demo dan pengujian langsung dari browser.
